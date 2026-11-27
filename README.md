@@ -8,11 +8,14 @@ An end-to-end **Data Analyst** portfolio project analyzing 600 retail e-commerce
 * Build both a **4-panel Executive Dashboard PNG** for quick GitHub viewing and a **formula-driven Excel Dashboard (`.xlsx`)** with native charts.
 * Translate raw metrics into actionable pricing and inventory recommendations.
 
+## Data Note
+The transactional dataset (`data/raw_retail_sales.csv`, 615 raw rows cleaned to 600 unique orders) is a **synthetic FY 2025 retail e-commerce dataset** generated to simulate realistic data quality issues—including duplicate `Order_ID`s, missing `Customer_Segment` and `Discount` values, trailing whitespace, and mixed date formats—and demonstrate an end-to-end cleaning, SQL, and reporting workflow.
+
 ## Repository Structure
 ```text
 retail-sales-analysis/
 ├── data/
-│   ├── raw_retail_sales.csv            # Raw dataset (615 rows with duplicates & nulls)
+│   ├── raw_retail_sales.csv            # Raw synthetic dataset (615 rows)
 │   └── cleaned_retail_sales.csv        # Cleaned dataset (600 unique orders)
 ├── sql/
 │   └── sql_queries.sql                 # 9 business KPI & profitability SQL queries
@@ -25,6 +28,8 @@ retail-sales-analysis/
 │   ├── monthly_revenue_trend.png
 │   ├── category_sales_vs_profit.png
 │   └── region_performance.png
+├── requirements.txt
+├── LICENSE
 └── README.md
 ```
 
@@ -58,8 +63,13 @@ retail-sales-analysis/
 * **Expand High-Margin Electronics & Office Supplies:** Prioritize ad spend and inventory for *Mechanical Keyboards*, *Ergonomic Chairs*, and *Smart Watches*.
 * **Target High-AOV Segments & Weekends:** Run upsell campaigns for Small Business buyers and weekend shoppers where basket sizes are largest.
 
+## Limitations
+* **Single-Year Scope:** The dataset covers only one year (FY 2025), so there is no multi-year baseline to separate true seasonal patterns from random monthly variance.
+* **Descriptive Analysis Only:** Findings on discount tiers and category margins are based on descriptive aggregations rather than formal statistical hypothesis testing or causal inference.
+* **Synthetic Data:** Because the records are synthetically generated, absolute revenue figures and product margins are illustrative rather than derived from live store operations.
+
 ## How to Run Locally
 ```bash
-pip install pandas matplotlib
+pip install -r requirements.txt
 python scripts/cleaning_and_eda.py
 ```
